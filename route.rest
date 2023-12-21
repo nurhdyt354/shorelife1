@@ -1,0 +1,5 @@
+GET http://localhost:3000/Fish/fetch/SA202304
+
+//
+
+GET http://localhost:3000/Fish/content/SA202304
