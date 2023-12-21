@@ -11,6 +11,10 @@ db.once('open', () => console.log('Connected to Database'))
 
 app.use(express.json())
 
+app.get('/', function(req,res){
+  res.send("Hello world")
+});
+                      
 const FishRouter = require('./routes/Fish')
 app.use('/Fish', FishRouter)
 
