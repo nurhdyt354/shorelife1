@@ -4,15 +4,16 @@ const app = express()
 const mongoose = require('mongoose')
 
 
-mongoose.connect(process.env.DATABASE_URL)
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
-
-app.use(express.json())
-
-app.get('/', function(req,res){
-  res.send("Hello world")
+mongoose.connect(
+  "mongodb+srv://dbFish:dbFishPassword@atlascluster.jmvsnrd.mongodb.net/", 
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+).then(() => {
+  console.log('Connected to DB');
+}).catch((err) => {
+  console.error('Connection error:', err);
 });
                       
 const FishRouter = require('./routes/Fish')
