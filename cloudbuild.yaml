@@ -1,0 +1,13 @@
+ - id: "deploy"
+    name: gcr.io/cloud-builders/gcloud
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        gcloud beta run deploy ${_APP_NAME} \
+          --platform managed \
+          --region asia-northeast1 \
+          --allow-unauthenticated \
+          --image gcr.io/${PROJECT_ID}/${_APP_NAME} \
+          --add-cloudsql-instances ${_INSTANCE_CONNECTION_NAME} \
+          --set-env-vars INSTANCE-CONNECTION-NAME="${_INSTANCE_CONNECTION_NAME}"
